@@ -79,9 +79,39 @@ function betterIterativeSolution(string) {
   return true
 }
 
+function bestIterativeSolution(string) {
+  let leftPointer = 0;
+  let rightPointer = string.length - 1;
+
+  while(leftPointer <= rightPointer) {
+    let leftCharacter = string[leftPointer];
+    let rightCharacter = string[rightPointer];
+
+    if(!isAlpha(leftCharacter)) {
+      leftPointer += 1;
+      continue;
+    }
+
+    if(!isAlpha(rightCharacter)) {
+      rightPointer -= 1;
+      continue;
+    }
+
+    if(leftCharacter.toLowerCase() !== rightCharacter.toLowerCase()) {
+      return false;
+    }
+
+    leftPointer += 1;
+    rightPointer -= 1;
+  }
+
+  return true
+}
+
 function isAValidPalindrome(string) {
   // return iterativeSolution(string);
-  return betterIterativeSolution(string);
+  // return betterIterativeSolution(string);
+  return bestIterativeSolution(string);
 }
 
 console.log(isAValidPalindrome("level") === true)
