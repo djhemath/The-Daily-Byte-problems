@@ -50,8 +50,38 @@ function iterativeSolution(string) {
   return true;
 }
 
+function betterIterativeSolution(string) {
+  let leftPointer = 0;
+  let rightPointer = string.length - 1;
+
+  while(leftPointer <= rightPointer) {
+    let leftCharacter = string[leftPointer];
+    let rightCharacter = string[rightPointer];
+
+    while(!isAlpha(leftCharacter)) {
+      leftPointer += 1;
+      leftCharacter = string[leftPointer];
+    }
+
+    while(!isAlpha(rightCharacter)) {
+      rightPointer -= 1;
+      rightCharacter = string[rightPointer];
+    }
+
+    if(leftCharacter.toLowerCase() !== rightCharacter.toLowerCase()) {
+      return false;
+    }
+
+    leftPointer += 1;
+    rightPointer -= 1;
+  }
+
+  return true
+}
+
 function isAValidPalindrome(string) {
-  return iterativeSolution(string);
+  // return iterativeSolution(string);
+  return betterIterativeSolution(string);
 }
 
 console.log(isAValidPalindrome("level") === true)
