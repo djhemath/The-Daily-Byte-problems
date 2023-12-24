@@ -71,3 +71,41 @@ console.log(addBinary("11", "1") === "100")
 console.log(addBinary("1", "0") === "1")
 console.log(addBinary("111", "111") === "1110")
 console.log(addBinary("1010", "1011") === "10101")
+
+
+function addBinaryBest(binary1, binary2) {
+  let maxLength = binary1.length;
+
+  if(binary2.length > maxLength) {
+    maxLength = binary2.length;
+  }
+
+  binary1 = binary1.padStart(maxLength, '0');
+  binary2 = binary2.padStart(maxLength, '0');
+
+
+  let result = '';
+  let carry = 0;
+
+  for(let i=maxLength-1; i>=0; i--) {
+    const bit1 = parseInt(binary1[i]);
+    const bit2 = parseInt(binary2[i]);
+
+    const total = bit1 + bit2 + carry;
+    const addResult = total % 2;
+    carry = Math.floor(total / 2);
+    result = addResult + result;
+  }
+
+  if(carry) {
+    result = carry + result;
+  }
+
+  return result;
+}
+
+console.log(addBinaryBest("100", "1") === "101")
+console.log(addBinaryBest("11", "1") === "100")
+console.log(addBinaryBest("1", "0") === "1")
+console.log(addBinaryBest("111", "111") === "1110")
+console.log(addBinaryBest("1010", "1011") === "10101")
