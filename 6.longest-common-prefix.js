@@ -42,3 +42,34 @@ console.log(longestCommonPrefix(["a", "b", "c"]) === "")
 console.log(longestCommonPrefix(["spot", "spotty", "spotted"]) === "spot")
 console.log(longestCommonPrefix(["flouride", "flour", "fl"]) === "fl")
 console.log(longestCommonPrefix(["flouride", "flour", "fl"].reverse()) === "fl")
+
+
+// O(n) - because of sorting
+function longestCommonPrefixBest(strings=[]) {
+  let prefix = '';
+
+  // Sort first, compare only first and last word
+  strings.sort(); // O(n)
+
+  const firstWord = strings[0];
+  const lastWord = strings[strings.length - 1];
+
+  for(let i=0; i<firstWord.length; i++) {
+    const firstWordChar = firstWord[i];
+    const lastWordChar = lastWord[i];
+
+    if(firstWordChar === lastWordChar) {
+      prefix += firstWordChar;
+    } else {
+      break;
+    }
+  }
+
+  return prefix;
+};
+
+console.log(longestCommonPrefixBest(["colorado", "color", "cold"]) === "col")
+console.log(longestCommonPrefixBest(["a", "b", "c"]) === "")
+console.log(longestCommonPrefixBest(["spot", "spotty", "spotted"]) === "spot")
+console.log(longestCommonPrefixBest(["flouride", "flour", "fl"]) === "fl")
+console.log(longestCommonPrefixBest(["flouride", "flour", "fl"].reverse()) === "fl")
