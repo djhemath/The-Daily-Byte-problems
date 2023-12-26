@@ -57,3 +57,34 @@ console.log(isPalindromeWithRemoval("abccab") === false);
 console.log(isPalindromeWithRemoval("abca") === true);
 console.log(isPalindromeWithRemoval("cbbcc") === true);
 console.log(isPalindromeWithRemoval("axbcbaba") === false);
+
+
+function isValidPalindrome(string, left, right, charRemoveCounter) {
+  if(charRemoveCounter === 0) return false;
+
+  while(left < right) {
+    if(string[left] === string[right]) {
+      left += 1;
+      right -= 1;
+    } else {
+      return isValidPalindrome(string, left + 1, right, charRemoveCounter - 1) || isValidPalindrome(string, left, right - 1, charRemoveCounter - 1);
+    }
+  }
+
+  return true;
+}
+
+function isPalindromeWithRemovalBest(string) {
+  let leftPointer = 0;
+  let rightPointer = string.length - 1;
+
+  return isValidPalindrome(string, leftPointer, rightPointer, 2);
+}
+
+console.log(isPalindromeWithRemovalBest("abcba") === true);
+console.log(isPalindromeWithRemovalBest("foobof") === true);
+console.log(isPalindromeWithRemovalBest("abccab") === false);
+console.log(isPalindromeWithRemovalBest("abca") === true);
+console.log(isPalindromeWithRemovalBest("cbbcc") === true);
+console.log(isPalindromeWithRemovalBest("axbcbaba") === false);
+console.log(isPalindromeWithRemovalBest("aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga") === true);
