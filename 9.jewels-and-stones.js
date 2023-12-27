@@ -38,3 +38,30 @@ console.log(jewelsAndStonesNaiveSolution("Af", "AaaddfFf") === 3);
 console.log(jewelsAndStonesNaiveSolution("AYOPD", "ayopd") === 0);
 console.log(jewelsAndStonesNaiveSolution("aA", "aAAbbbb") === 3);
 console.log(jewelsAndStonesNaiveSolution("z", "ZZ") === 0);
+
+// O(m+n)
+function jewelsAndStonesBetterSolution(jewels, stones) {
+  const jewelsMap = new Map();
+  let sum = 0;
+
+  for(let i=0; i<jewels.length; i++) {
+    const jewel = jewels[i];
+    jewelsMap[jewel] = true;
+  }
+
+  for(let i=0; i<stones.length; i++) {
+    const stone = stones[i];
+
+    if(jewelsMap[stone]) {
+      sum += 1;
+    }
+  }
+
+  return sum;
+}
+
+console.log(jewelsAndStonesBetterSolution("abc", "ac") === 2);
+console.log(jewelsAndStonesBetterSolution("Af", "AaaddfFf") === 3);
+console.log(jewelsAndStonesBetterSolution("AYOPD", "ayopd") === 0);
+console.log(jewelsAndStonesBetterSolution("aA", "aAAbbbb") === 3);
+console.log(jewelsAndStonesBetterSolution("z", "ZZ") === 0);
