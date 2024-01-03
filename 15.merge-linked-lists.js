@@ -8,7 +8,7 @@
  * 
  */
 
-const { ListNode } = require('./common/list-node');
+const { ListNode } = require('./common/linked-list');
 
 function mergeLinkedLists(list1, list2) {
   let currentList1Node = list1;
