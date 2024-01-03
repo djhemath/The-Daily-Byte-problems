@@ -8,11 +8,7 @@
  * 
  */
 
-
-function ListNode(val, next) {
-  this.val = val || 0;
-  this.next = next || null;
-}
+const { ListNode } = require('./common/list-node');
 
 function mergeLinkedLists(list1, list2) {
   let currentList1Node = list1;
