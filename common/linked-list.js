@@ -4,4 +4,20 @@ function ListNode(val, next) {
   this.next = next || null;
 }
 
-module.exports = { ListNode };
+function testLinkedListResults(list, expected=[]) {
+  let currentNode = list;
+  let i=0;
+
+  while(currentNode) {
+    if(expected[i] !== currentNode.val) {
+      return false;
+    }
+
+    currentNode = currentNode.next;
+    i++;
+  }
+
+  return true;
+}
+
+module.exports = { ListNode, testLinkedListResults };

@@ -8,7 +8,7 @@
  * 
  */
 
-const { ListNode } = require('./common/linked-list');
+const { ListNode, testLinkedListResults } = require('./common/linked-list');
 
 function mergeLinkedLists(list1, list2) {
   let currentList1Node = list1;
@@ -70,7 +70,7 @@ const test1List2 = test1List2Node1;
 const test1Result = mergeLinkedLists(test1List1, test1List2);
 const test1ResultExpected = [1, 2, 3, 4, 5, 6];
 
-console.log(testResults(test1Result, test1ResultExpected));
+console.log(testLinkedListResults(test1Result, test1ResultExpected));
 
 
 
@@ -87,7 +87,7 @@ const test2List2 = test2List2Node1;
 const test2Result = mergeLinkedLists(test2List1, test2List2);
 const test2ResultExpected = [1, 2, 3, 4, 5, 6];
 
-console.log(testResults(test2Result, test2ResultExpected));
+console.log(testLinkedListResults(test2Result, test2ResultExpected));
 
 
 
@@ -104,7 +104,7 @@ const test3List2 = test3List2Node1;
 const test3Result = mergeLinkedLists(test3List1, test3List2);
 const test3ResultExpected = [1, 4, 4, 5, 6, 7];
 
-console.log(testResults(test3Result, test3ResultExpected));
+console.log(testLinkedListResults(test3Result, test3ResultExpected));
 
 
 const test4List1Node3 = new ListNode(7);
@@ -119,7 +119,7 @@ const test4List2 = test4List2Node1;
 const test4Result = mergeLinkedLists(test4List1, test4List2);
 const test4ResultExpected = [4, 4, 5, 6, 7];
 
-console.log(testResults(test4Result, test4ResultExpected));
+console.log(testLinkedListResults(test4Result, test4ResultExpected));
 
 
 const test5List1Node3 = new ListNode(7);
@@ -132,7 +132,7 @@ const test5List2 = null;
 const test5Result = mergeLinkedLists(test5List1, test5List2);
 const test5ResultExpected = [4, 4, 7];
 
-console.log(testResults(test5Result, test5ResultExpected));
+console.log(testLinkedListResults(test5Result, test5ResultExpected));
 
 
 const test6List1 = null;
@@ -145,22 +145,4 @@ const test6List2 = test6List2Node1;
 const test6Result = mergeLinkedLists(test6List1, test6List2);
 const test6ResultExpected = [1, 3, 6];
 
-console.log(testResults(test6Result, test6ResultExpected));
-
-
-
-function testResults(list, expected=[]) {
-  let currentNode = list;
-  let i=0;
-
-  while(currentNode) {
-    if(expected[i] !== currentNode.val) {
-      return false;
-    }
-
-    currentNode = currentNode.next;
-    i++;
-  }
-
-  return true;
-}
+console.log(testLinkedListResults(test6Result, test6ResultExpected));
