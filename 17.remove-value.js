@@ -10,6 +10,8 @@
 
 const { ListNode, testLinkedListResults } = require('./common/linked-list');
 
+// T -> O(n)
+// S -> O(n)
 function removeAllNodesWithValue(head, value) {
   let currentNode = head;
   let previousNode = null;
@@ -40,6 +42,8 @@ function removeAllNodesWithValue(head, value) {
   return head;
 }
 
+// T -> O(n)
+// S -> O(n)
 function removeAllNodesWithValue_DummyNodeSolution(head, value) {
   const dummy = new ListNode(null, head);
 
