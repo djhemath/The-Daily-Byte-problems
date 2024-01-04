@@ -40,6 +40,27 @@ function removeAllNodesWithValue(head, value) {
   return head;
 }
 
+function removeAllNodesWithValue_DummyNodeSolution(head, value) {
+  const dummy = new ListNode(null, head);
+
+  let currentNode = head;
+  let previousNode = dummy;
+
+  while(currentNode) {
+    if(currentNode.val === value) {
+      previousNode.next = currentNode.next;
+      currentNode = currentNode.next;
+
+      continue;
+    }
+
+    previousNode = currentNode;
+    currentNode = currentNode.next;
+  }
+
+  return dummy.next;
+}
+
 const test1ListNode3 = new ListNode(3);
 const test1ListNode2 = new ListNode(2, test1ListNode3);
 const test1ListNode1 = new ListNode(1, test1ListNode2);
@@ -47,9 +68,11 @@ const test1List = test1ListNode1;
 
 const test1ResultExpected = [1, 2];
 
-const test1Result1 = removeAllNodesWithValue(test1List, 3);
+// const test1Result1 = removeAllNodesWithValue(test1List, 3);
+const test1Result2 = removeAllNodesWithValue_DummyNodeSolution(test1List, 3);
 
-console.log(testLinkedListResults(test1Result1, test1ResultExpected));
+// console.log(testLinkedListResults(test1Result1, test1ResultExpected));
+console.log(testLinkedListResults(test1Result2, test1ResultExpected));
 
 
 const test2ListNode5 = new ListNode(12);
@@ -61,9 +84,11 @@ const test2List = test2ListNode1;
 
 const test2ResultExpected = [8, 4, 12];
 
-const test2Result = removeAllNodesWithValue(test2List, 1);
+// const test2Result = removeAllNodesWithValue(test2List, 1);
+const test2Result2 = removeAllNodesWithValue_DummyNodeSolution(test2List, 1);
 
-console.log(testLinkedListResults(test2Result, test2ResultExpected));
+// console.log(testLinkedListResults(test2Result, test2ResultExpected));
+console.log(testLinkedListResults(test2Result2, test2ResultExpected));
 
 
 const test3ListNode4 = new ListNode(9);
@@ -74,6 +99,8 @@ const test3List = test3ListNode1;
 
 const test3ResultExpected = [12, 2, 9];
 
-const test3Result = removeAllNodesWithValue(test3List, 7);
+// const test3Result = removeAllNodesWithValue(test3List, 7);
+const test3Result2 = removeAllNodesWithValue_DummyNodeSolution(test3List, 7);
 
-console.log(testLinkedListResults(test3Result, test3ResultExpected));
+// console.log(testLinkedListResults(test3Result, test3ResultExpected));
+console.log(testLinkedListResults(test3Result2, test3ResultExpected));
