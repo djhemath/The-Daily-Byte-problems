@@ -8,7 +8,7 @@
  * 
  */
 
-const { ListNode, testLinkedListResults } = require('./common/linked-list');
+const { ListNode } = require('./common/linked-list');
 
 // T - O(n)
 // S - O(1)
@@ -39,14 +39,30 @@ function findMiddleElement(head) {
   return currentNode;
 }
 
+// T - O(n/2) -> O(n)
+// S - O(1)
+function findMiddleElementTwoPointer(head) {
+  let slow = head;
+  let fast = head;
+
+  while(fast !== null && fast.next !== null) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+
+  return slow;
+}
+
 const test1ListNode3 = new ListNode(3);
 const test1ListNode2 = new ListNode(2, test1ListNode3);
 const test1ListNode1 = new ListNode(1, test1ListNode2);
 const test1List = test1ListNode1;
 
 const test1Result1 = findMiddleElement(test1List, 3);
+const test1Result2 = findMiddleElementTwoPointer(test1List, 3);
 
 console.log(test1Result1.val === 2);
+console.log(test1Result2.val === 2);
 
 
 const test2ListNode4 = new ListNode(4);
@@ -56,16 +72,20 @@ const test2ListNode1 = new ListNode(1, test2ListNode2);
 const test2List = test2ListNode1;
 
 const test2Result1 = findMiddleElement(test2List, 3);
+const test2Result2 = findMiddleElementTwoPointer(test2List, 3);
 
 console.log(test2Result1.val === 3);
+console.log(test2Result2.val === 3);
 
 
 const test3ListNode1 = new ListNode(1);
 const test3List = test3ListNode1;
 
 const test3Result1 = findMiddleElement(test3List, 3);
+const test3Result2 = findMiddleElementTwoPointer(test3List, 3);
 
 console.log(test3Result1.val === 1);
+console.log(test3Result2.val === 1);
 
 
 const test4ListNode5 = new ListNode(5);
@@ -76,8 +96,10 @@ const test4ListNode1 = new ListNode(1, test4ListNode2);
 const test4List = test4ListNode1;
 
 const test4Result1 = findMiddleElement(test4List, 3);
+const test4Result2 = findMiddleElementTwoPointer(test4List, 3);
 
 console.log(test4Result1.val === 3);
+console.log(test4Result2.val === 3);
 
 
 const test5ListNode6 = new ListNode(6);
@@ -89,5 +111,8 @@ const test5ListNode1 = new ListNode(1, test5ListNode2);
 const test5List = test5ListNode1;
 
 const test5Result1 = findMiddleElement(test5List, 3);
+const test5Result2 = findMiddleElementTwoPointer(test5List, 3);
 
 console.log(test5Result1.val === 4);
+
+console.log(test5Result2.val === 4);
