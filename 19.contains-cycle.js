@@ -36,6 +36,24 @@ function containsCycle(head) {
   return false;
 }
 
+function containsCycleBestSolution(head) {
+
+  let fast = head;
+  let slow = head;
+
+  while(fast && fast.next) {
+    fast = fast.next.next;
+    slow = slow.next;
+
+    // Yes, we can compare two objects directly here.
+    // And we actually have to compare, because a cycle means if the same object is linked.
+    // Same object means, memory address will be the same, so equality operator will work.
+    if(fast === slow) return true;
+  }
+
+  return false;
+}
+
 const test1ListNode1 = new ListNode(1);
 const test1ListNode2 = new ListNode(2);
 const test1ListNode3 = new ListNode(3);
@@ -46,7 +64,8 @@ test1ListNode3.next = test1ListNode1;
 
 const test1List = test1ListNode1;
 
-console.log(containsCycle(test1List) === true);
+// console.log(containsCycle(test1List) === true);
+console.log(containsCycleBestSolution(test1List) === true);
 
 
 const test2ListNode1 = new ListNode(1);
@@ -59,7 +78,8 @@ test2ListNode3.next = null;
 
 const test2List = test2ListNode1;
 
-console.log(containsCycle(test2List) === false);
+// console.log(containsCycle(test2List) === false);
+console.log(containsCycleBestSolution(test2List) === false);
 
 
 const test3ListNode1 = new ListNode(1);
@@ -67,4 +87,21 @@ test3ListNode1.next = test3ListNode1;
 
 const test3List = test3ListNode1;
 
-console.log(containsCycle(test3List) === true);
+// console.log(containsCycle(test3List) === true);
+console.log(containsCycleBestSolution(test3List) === true);
+
+
+const test4ListNode1 = new ListNode(1);
+const test4ListNode2 = new ListNode(2);
+const test4ListNode3 = new ListNode(3);
+const test4ListNode4 = new ListNode(1);
+
+test4ListNode1.next = test4ListNode2;
+test4ListNode2.next = test4ListNode3;
+test4ListNode3.next = test4ListNode4;
+test4ListNode4.next = null;
+
+const test4List = test4ListNode1;
+
+// console.log(containsCycle(test4List) === false);
+console.log(containsCycleBestSolution(test4List) === false);
