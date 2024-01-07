@@ -36,6 +36,7 @@ function containsCycle(head) {
   return false;
 }
 
+// Also known as Floyd's cycle detection algorithm
 function containsCycleBestSolution(head) {
 
   let fast = head;
