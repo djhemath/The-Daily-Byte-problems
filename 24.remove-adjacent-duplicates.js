@@ -57,3 +57,8 @@ console.log(removeAdjacentDuplicates('abccba') === '')
 console.log(removeAdjacentDuplicates('foobar') === 'fbar')
 console.log(removeAdjacentDuplicates('abccbefggfe') === 'a')
 console.log(removeAdjacentDuplicates('azxxzy') === 'ay')
+
+console.log(removeAdjacentDuplicatesStack('abccba') === '')
+console.log(removeAdjacentDuplicatesStack('foobar') === 'fbar')
+console.log(removeAdjacentDuplicatesStack('abccbefggfe') === 'a')
+console.log(removeAdjacentDuplicatesStack('azxxzy') === 'ay')
