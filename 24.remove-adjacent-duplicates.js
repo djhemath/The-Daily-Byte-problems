@@ -33,6 +33,26 @@ function removeAdjacentDuplicates(string='') {
   return charArray.join('');
 }
 
+function removeAdjacentDuplicatesStack(string='') {
+  if(!string || typeof string !== 'string') {
+    return '';
+  }
+
+  let stack = [];
+
+  for(let i=0; i<string.length; i++) {
+    const char = string[i];
+
+    if(stack[stack.length - 1] === char) {
+      stack.pop();
+    } else {
+      stack.push(char);
+    }
+  }
+
+  return stack.join('');
+}
+
 console.log(removeAdjacentDuplicates('abccba') === '')
 console.log(removeAdjacentDuplicates('foobar') === 'fbar')
 console.log(removeAdjacentDuplicates('abccbefggfe') === 'a')
